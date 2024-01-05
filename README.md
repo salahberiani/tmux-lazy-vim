@@ -11,7 +11,7 @@ This repository contains a Bash script that automates the setup of a development
 - **fd:** A fast and user-friendly alternative to the `find` command.
 - **Nerd Font DroidSansMono:** A font with icons to enhance the visual experience.
 
-## Usage
+## Usage(Debian/Ubuntu)
 
 1. Clone this repository:
 
