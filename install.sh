@@ -97,3 +97,97 @@ rm -rf "$HOME/.config/nvim/.git"
 echo "lazyvim has been set up."
 
 echo "Done."
+
+# #!/bin/bash
+# set -e
+#
+# # Function to display error messages
+# function display_error {
+#     echo "Error: $1" >&2
+# }
+#
+# # Function to check and install a package based on the package manager
+# function install_package {
+#     if command -v "$1" &>/dev/null; then
+#         echo "$1 is already installed."
+#     else
+#         echo "Installing $1..."
+#
+#         if command -v apt-get &>/dev/null; then
+#             sudo apt-get update
+#             sudo apt-get install "$1" -y || { display_error "Failed to install $1."; exit 1; }
+#         elif command -v dnf &>/dev/null; then
+#             sudo dnf install "$1" -y || { display_error "Failed to install $1."; exit 1; }
+#         elif command -v zypper &>/dev/null; then
+#             sudo zypper install "$1" -y || { display_error "Failed to install $1."; exit 1; }
+#         elif command -v pacman &>/dev/null; then
+#             sudo pacman -Syu --noconfirm "$1" || { display_error "Failed to install $1."; exit 1; }
+#         elif command -v yum &>/dev/null; then
+#             sudo yum install -y "$1" || { display_error "Failed to install $1."; exit 1; }
+#         else
+#             display_error "Unsupported package manager. Please install $1 manually."
+#             exit 1
+#         fi
+#
+#         echo "$1 has been successfully installed."
+#     fi
+# }
+#
+# # Function to download and install Nerd Font
+# function install_nerd_font {
+#     echo "Downloading and installing Nerd Font..."
+#     NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/DroidSansMono.zip"
+#     wget "$NERD_FONT_URL" || { display_error "Failed to download Nerd Font."; exit 1; }
+#
+#     if command -v unzip &>/dev/null; then
+#         unzip DroidSansMono.zip -d "$HOME/.fonts" || { display_error "Failed to unzip Nerd Font."; exit 1; }
+#     else
+#         display_error "Unzip is not installed. Please install unzip manually."
+#         exit 1
+#     fi
+#
+#     if command -v fc-cache &>/dev/null; then
+#         fc-cache -fv
+#     else
+#         display_error "fc-cache is not installed. Please install fontconfig manually."
+#         exit 1
+#     fi
+#
+#     echo "Nerd Font has been installed."
+# }
+#
+# # Check if tmux is installed
+# install_package "tmux"
+#
+# # Install tmux plugin manager
+# if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+#     echo "Cloning tmux plugin manager..."
+#     git clone "https://github.com/tmux-plugins/tpm" "$HOME/.tmux/plugins/tpm"
+# fi
+#
+# # Check and copy tmux configuration
+# TMUX_CONF_PATH="$HOME/.tmux.conf"
+# if [ ! -e "$TMUX_CONF_PATH" ]; then
+#     cp .tmux.conf "$TMUX_CONF_PATH"
+#     echo "tmux configuration copied to $TMUX_CONF_PATH"
+# else
+#     echo "tmux configuration already exists at $TMUX_CONF_PATH"
+# fi
+#
+# # Install Neovim
+# install_package "nvim"
+#
+# # ... (rest of the script remains unchanged)
+#
+# # Install lazyvim
+# echo "Setting up lazyvim..."
+# mv "$HOME/.config/nvim{,.bak}" || true
+# mv "$HOME/.local/share/nvim{,.bak}" || true
+# mv "$HOME/.local/state/nvim{,.bak}" || true
+# mv "$HOME/.cache/nvim{,.bak}" || true
+#
+# cp -r ./nvim/ "$HOME/.config/nvim"
+# rm -rf "$HOME/.config/nvim/.git"
+# echo "lazyvim has been set up."
+#
+# echo "Done."
