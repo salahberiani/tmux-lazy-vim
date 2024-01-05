@@ -1,4 +1,4 @@
-# My Development Environment Setup
+# Tmux And Neovim Environment Setup
 
 This repository contains a Bash script that automates the setup of a development environment with various tools and configurations. The script is designed to work on Ubuntu-based systems.
 
