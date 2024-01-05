@@ -2,7 +2,7 @@
 set -e
 
 # Variables
-NEOVIM_VERSION="latest"
+NEOVIM_VERSION="0.9.5"
 TMUX_PLUGIN_MANAGER="https://github.com/tmux-plugins/tpm"
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 RIPE_VERSION="13.0.0"
@@ -79,8 +79,9 @@ fi
 echo "Downloading and installing Nerd Font..."
 NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/DroidSansMono.zip"
 wget "$NERD_FONT_URL"
+sudo apt install unzip -y
 unzip DroidSansMono.zip -d "$HOME/.fonts"
-sudo apt install fontconfig
+sudo apt install fontconfig -y
 fc-cache -fv
 echo "Nerd Font has been installed."
 
@@ -91,7 +92,7 @@ mv "$HOME/.local/share/nvim{,.bak}" || true
 mv "$HOME/.local/state/nvim{,.bak}" || true
 mv "$HOME/.cache/nvim{,.bak}" || true
 
-git clone https://github.com/LazyVim/starter "$HOME/.config/nvim"
+cp -r ./nvim/ "$HOME/.config/nvim"
 rm -rf "$HOME/.config/nvim/.git"
 echo "lazyvim has been set up."
 
