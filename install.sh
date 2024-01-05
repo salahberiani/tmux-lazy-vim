@@ -2,7 +2,7 @@
 set -e
 
 # Variables
-NEOVIM_VERSION="0.5.1"
+NEOVIM_VERSION="latest"
 TMUX_PLUGIN_MANAGER="https://github.com/tmux-plugins/tpm"
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 RIPE_VERSION="13.0.0"
@@ -80,6 +80,7 @@ echo "Downloading and installing Nerd Font..."
 NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/DroidSansMono.zip"
 wget "$NERD_FONT_URL"
 unzip DroidSansMono.zip -d "$HOME/.fonts"
+sudo apt install fontconfig
 fc-cache -fv
 echo "Nerd Font has been installed."
 
