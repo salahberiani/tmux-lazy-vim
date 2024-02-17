@@ -1,12 +1,80 @@
+local transparent = false
+
 return {
+  {
+    "ellisonleao/gruvbox.nvim",
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    opts = {
+      transparent = transparent,
+    },
+  },
+  {
+    "navarasu/onedark.nvim",
+    opts = {
+      transparent = transparent,
+    },
+  },
   {
     "folke/tokyonight.nvim",
     opts = {
-      transparent = true,
+      transparent = transparent,
       styles = {
-        sidebars = "transparent",
-        floats = "transparent",
+        sidebars = "dark",
+        floats = "dark",
       },
     },
   },
+  {
+    "catppuccin/nvim",
+    -- lazy = true,
+    -- name = "catppuccin",
+    -- opts = {
+    --   integrations = {
+    --     aerial = true,
+    --     alpha = true,
+    --     cmp = true,
+    --     dashboard = true,
+    --     flash = true,
+    --     gitsigns = true,
+    --     headlines = true,
+    --     illuminate = true,
+    --     indent_blankline = { enabled = true },
+    --     leap = true,
+    --     lsp_trouble = true,
+    --     mason = true,
+    --     markdown = true,
+    --     mini = true,
+    --     native_lsp = {
+    --       enabled = true,
+    --       underlines = {
+    --         errors = { "undercurl" },
+    --         hints = { "undercurl" },
+    --         warnings = { "undercurl" },
+    --         information = { "undercurl" },
+    --       },
+    --     },
+    --     navic = { enabled = true, custom_bg = "lualine" },
+    --     neotest = true,
+    --     neotree = true,
+    --     noice = true,
+    --     notify = true,
+    --     semantic_tokens = true,
+    --     telescope = true,
+    --     treesitter = true,
+    --     treesitter_context = true,
+    --     which_key = true,
+    --   },
+    -- },
+    -- opts = {
+    --   transparent_background = true,
+    -- },
+  },
+  -- {
+  --   "LazyVim/LazyVim",
+  --   opts = {
+  --     colorscheme = "catppuccin",
+  --   },
+  -- },
 }
