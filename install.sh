@@ -10,7 +10,6 @@ RIPE_VERSION="13.0.0"
 # Create directory and move into it
 INSTALL_DIR="$HOME/install-tmux-neovim"
 mkdir -p "$INSTALL_DIR"
-cd "$INSTALL_DIR"
 
 sudo apt update
 sudo apt upgrade
@@ -35,7 +34,7 @@ else
 fi
 
 # install go
-if command -v &>/dev/null; then
+if command -v go &>/dev/null; then
 	echo "go is already installed."
 else
 
@@ -59,6 +58,16 @@ else
 	sudo apt install wget apt-transport-https gnupg2
 	sudo apt install lua5.3
 	echo "lua has been successfully installed."
+fi
+
+# install luarocks
+if command -v luarocks &>/dev/null; then
+	echo "luarocks is already installed."
+else
+	# Install luarocks
+	echo "luarocks is not installed. Installing..."
+	sudo apt -y install luarocks
+	echo "luarocks has been successfully installed."
 fi
 
 # Check if tmux is installed
