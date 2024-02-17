@@ -7,6 +7,60 @@ TMUX_PLUGIN_MANAGER="https://github.com/tmux-plugins/tpm"
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 RIPE_VERSION="13.0.0"
 
+# Create directory and move into it
+INSTALL_DIR="$HOME/install-tmux-neovim"
+mkdir -p "$INSTALL_DIR"
+cd "$INSTALL_DIR"
+
+sudo apt update
+sudo apt upgrade
+sudo apt install libfuse2
+sudo apt install build-essential
+
+# install nodejs
+if command -v node &>/dev/null; then
+	echo "tmux is already installed."
+else
+	# Install tmux
+	echo "node is not installed. Installing..."
+	sudo apt install curl gnupg
+	curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+	NODE_MAJOR=18
+	echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+	sudo apt update
+	sudo apt install nodejs
+	sudo npm i -g neovim
+	sudo npm i -g tree-sitter-cli
+	echo "node has been successfully installed."
+fi
+
+# install go
+if command -v &>/dev/null; then
+	echo "go is already installed."
+else
+
+	echo "go  is not installed. Installing..."
+	wget -c https://go.dev/dl/go1.22.0.linux-amd64.tar.gz
+	sudo tar -C /usr/local/ -xzf go1.22.0.linux-amd64.tar.gz
+	sed -i '$ a\
+if [ -d "/usr/local/go/bin" ] ; then\n    PATH="/usr/local/go/bin:$PATH"\nfi
+' ~/.profile
+	echo "go  has been successfully installed."
+fi
+
+# install lua
+if command -v lua &>/dev/null; then
+	echo "lua is already installed."
+else
+	# Install lua
+	echo "lua is not installed. Installing..."
+	sudo apt update
+	sudo apt upgrade
+	sudo apt install wget apt-transport-https gnupg2
+	sudo apt install lua5.3
+	echo "lua has been successfully installed."
+fi
+
 # Check if tmux is installed
 if command -v tmux &>/dev/null; then
 	echo "tmux is already installed."
@@ -40,8 +94,10 @@ else
 	echo "Installing Neovim..."
 	curl -LO https://github.com/neovim/neovim/releases/download/v${NEOVIM_VERSION}/nvim.appimage
 	chmod u+x nvim.appimage
-	./nvim.appimage --appimage-extract
-	sudo mv squashfs-root / && sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
+	./nvim.appimage
+	mkdir -p /opt/nvim
+	mv nvim.appimage /opt/nvim/nvim
+	sed -i '$ a\export PATH="$PATH:/opt/nvim/"' ~/.bashrc
 	echo "Neovim has been successfully installed."
 fi
 
@@ -104,5 +160,6 @@ mv "$HOME/.cache/nvim{,.bak}" || true
 cp -r ./nvim/ "$HOME/.config/nvim"
 rm -rf "$HOME/.config/nvim/.git"
 echo "lazyvim has been set up."
-
+source .bashrc
+nvim
 echo "Done."
