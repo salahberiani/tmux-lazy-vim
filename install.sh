@@ -13,8 +13,9 @@ mkdir -p "$INSTALL_DIR"
 
 sudo apt update
 sudo apt upgrade
-sudo apt install libfuse2
-sudo apt install build-essential
+sudo apt install libfuse2 -y
+sudo apt install build-essential -y
+sudo apt install xclip -y
 
 # install nodejs
 if command -v node &>/dev/null; then
