@@ -168,6 +168,7 @@ mv "$HOME/.cache/nvim{,.bak}" || true
 cp -r ./nvim/ "$HOME/.config/nvim"
 rm -rf "$HOME/.config/nvim/.git"
 echo "lazyvim has been set up."
-source .bashrc
+source ~/.bashrc
+source ~/.profile
 nvim
 echo "Done."
