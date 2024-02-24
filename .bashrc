@@ -116,7 +116,6 @@ if ! shopt -oq posix; then
 fi
 
 # export PS1='\[\033[0;33m\]\W \[\033[0;34m\]\$\[\033[0m\] '
-export PS1='\[\033[01;34m\]\w\[\033[00m\]\$ '
 
 # Function to ssh to a machine with tmux
 connect() {
@@ -140,10 +139,7 @@ _connect_completion() {
 
 # Register the custom completion function for the connect command
 complete -F _connect_completion connect
-alias me='cd /home/salah'
-alias b='cd /home/salah/namla-backend'
 alias c='clear'
-alias p='cd /home/salah/personal/'
 alias t='tmux'
 alias tn='tmux new -s'
 alias tk='tmux kill-session -t'

@@ -92,6 +92,7 @@ fi
 TMUX_CONF_PATH="$HOME/.tmux.conf"
 if [ ! -e "$TMUX_CONF_PATH" ]; then
 	cp -r .tmux.conf "$TMUX_CONF_PATH"
+	cp -r ./tmux-kanagawa/ "$HOME/.tmux/plugins/"
 	echo "tmux configuration copied to $TMUX_CONF_PATH"
 else
 	echo "tmux configuration already exists at $TMUX_CONF_PATH"
