@@ -91,12 +91,16 @@ fi
 # Check and copy tmux configuration
 TMUX_CONF_PATH="$HOME/.tmux.conf"
 if [ ! -e "$TMUX_CONF_PATH" ]; then
-	cp .tmux.conf "$TMUX_CONF_PATH"
+	cp -r .tmux.conf "$TMUX_CONF_PATH"
 	echo "tmux configuration copied to $TMUX_CONF_PATH"
 else
 	echo "tmux configuration already exists at $TMUX_CONF_PATH"
 fi
 
+# Check and copy tmux configuration
+BASH_CONF_PATH="$HOME/.bashrc"
+cp -r .bashrc "$BASH_CONF_PATH"
+echo "bash configuration copied to $BASH_CONF_PATH"
 # Install Neovim
 if command -v nvim &>/dev/null; then
 	echo "Neovim is already installed."

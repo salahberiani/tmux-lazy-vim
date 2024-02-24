@@ -1,28 +1,28 @@
 local transparent = false
 
 return {
-  {
-    "ellisonleao/gruvbox.nvim",
-  },
+  -- {
+  --   "ellisonleao/gruvbox.nvim",
+  -- },
   {
     "rebelot/kanagawa.nvim",
     opts = {
       transparent = transparent,
     },
   },
-  {
-    "navarasu/onedark.nvim",
-    opts = {
-      transparent = transparent,
-    },
-  },
+  -- {
+  --   "navarasu/onedark.nvim",
+  --   opts = {
+  --     transparent = transparent,
+  --   },
+  -- },
   {
     "folke/tokyonight.nvim",
     opts = {
       transparent = transparent,
       styles = {
-        sidebars = "dark",
-        floats = "dark",
+        sidebars = "transparent",
+        floats = "transparent",
       },
     },
   },
@@ -71,10 +71,10 @@ return {
     --   transparent_background = true,
     -- },
   },
-  -- {
-  --   "LazyVim/LazyVim",
-  --   opts = {
-  --     colorscheme = "catppuccin",
-  --   },
-  -- },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "kanagawa",
+    },
+  },
 }
