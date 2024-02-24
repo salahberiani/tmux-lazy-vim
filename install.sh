@@ -93,6 +93,9 @@ TMUX_CONF_PATH="$HOME/.tmux.conf"
 if [ ! -e "$TMUX_CONF_PATH" ]; then
 	cp -r .tmux.conf "$TMUX_CONF_PATH"
 	cp -r ./tmux-kanagawa/ "$HOME/.tmux/plugins/"
+	cd ~/.tmux/plugins/tmux-kanagawa
+	chmod u+x kanagawa.tmux
+	chmod u+x ./**/*.sh
 	echo "tmux configuration copied to $TMUX_CONF_PATH"
 else
 	echo "tmux configuration already exists at $TMUX_CONF_PATH"
@@ -174,7 +177,6 @@ mv "$HOME/.cache/nvim{,.bak}" || true
 cp -r ./nvim/ "$HOME/.config/nvim"
 rm -rf "$HOME/.config/nvim/.git"
 echo "lazyvim has been set up."
-source $HOME/.bashrc
-source $HOME/.profile
-nvim
+source "$HOME/.bashrc"
+source "$HOME/.profile"
 echo "Done."
